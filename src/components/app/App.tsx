@@ -4,34 +4,37 @@ import AppFilter from "../app-filter/App-filter";
 import EmployeesList from "../employees-list/Employees-list";
 import EmployeesAddForm from "../employees-add-form/Employees-add-form";
 import "./app.css";
+import {Component} from "react";
 
 export interface IData {
-  id: string;
-  name: string;
-  salary: number;
-  increase: boolean;
+	id: string;
+	name: string;
+	salary: string;
+	increase: boolean;
 }
 
-function App() {
-  const data: IData[] = [
-    { id: crypto.randomUUID(), name: "John C.", salary: 800, increase: false },
-    { id: crypto.randomUUID(), name: "Alex M.", salary: 3000, increase: true },
-    { id: crypto.randomUUID(), name: "Carl W.", salary: 5000, increase: false },
-  ];
+class App extends Component {
+	render() {
+		const data: IData[] = [
+			{id: crypto.randomUUID(), name: "John C.", salary: '800', increase: false},
+			{id: crypto.randomUUID(), name: "Alex M.", salary: '3000', increase: true},
+			{id: crypto.randomUUID(), name: "Carl W.", salary: '5000', increase: false},
+		];
 
-  return (
-    <div className="app">
-      <AppInfo />
+		return (
+			<div className="app">
+				<AppInfo/>
 
-      <div className="search-panel">
-        <SearchPanel />
-        <AppFilter />
-      </div>
+				<div className="search-panel">
+					<SearchPanel/>
+					<AppFilter/>
+				</div>
 
-      <EmployeesList data={data} />
-      <EmployeesAddForm />
-    </div>
-  );
+				<EmployeesList data={data}/>
+				<EmployeesAddForm/>
+			</div>
+		);
+	}
 }
 
 export default App;
