@@ -1,5 +1,6 @@
+import {ChangeEvent, Component, FormEvent} from "react";
+
 import "./employees-add-form.css";
-import {ChangeEvent, Component} from "react";
 
 export class EmployeesAddForm extends Component<IEmployeesAddForm, IState> {
 	constructor(props: IEmployeesAddForm) {
@@ -17,9 +18,16 @@ export class EmployeesAddForm extends Component<IEmployeesAddForm, IState> {
 		})
 	}
 
-	onAddItem = () => {
+	onSubmit = (e: FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
 		const {name, salary} = this.state
-		this.props.addNewItem(name, salary)
+
+		if (name.length > 3 && salary) {
+			this.props.addNewItem(name, salary)
+			this.setState({
+				name: '', salary: ''
+			})
+		}
 	}
 
 	render() {
@@ -28,7 +36,7 @@ export class EmployeesAddForm extends Component<IEmployeesAddForm, IState> {
 		return (
 			<div className="app-add-form">
 				<h3>Add a new employee</h3>
-				<form className="add-form d-flex">
+				<form onSubmit={(event) => this.onSubmit(event)} className="add-form d-flex">
 					<input
 						onChange={(event) => this.onValueChange(event)}
 						name="name"
@@ -46,7 +54,7 @@ export class EmployeesAddForm extends Component<IEmployeesAddForm, IState> {
 						placeholder="Salary $"
 					/>
 
-					<button onClick={this.onAddItem} type="submit" className="btn btn-outline-light">
+					<button type="submit" className="btn btn-outline-light">
 						Add
 					</button>
 				</form>

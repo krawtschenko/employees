@@ -1,16 +1,16 @@
-import {Component, FC} from "react";
+import {Component} from "react";
 import {IData} from "../app/App";
 import {EmployeesListItem} from "../employees-list-item/Employees-list-item";
 import "./employees-list.css";
 
 export class EmployeesList extends Component<IEmployeesList> {
 	render() {
-		const {data, onDelete} = this.props;
+		const {data, onDelete, onToggleProp} = this.props;
 		const elements = data.map((item) => {
-			const {id, ...itemProps} = item;
 			return (
-				<EmployeesListItem key={id} {...itemProps}
-				                   onDelete={() => onDelete(id)}/>
+				<EmployeesListItem key={item.id} {...item}
+				                   onDelete={() => onDelete(item.id)}
+				                   onToggleProp={onToggleProp}/>
 			);
 		});
 
@@ -21,4 +21,5 @@ export class EmployeesList extends Component<IEmployeesList> {
 interface IEmployeesList {
 	data: IData[];
 	onDelete: (id: string) => void
+	onToggleProp: (id: string, prop: 'increase' | 'rise') => void
 }
