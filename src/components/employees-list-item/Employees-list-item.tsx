@@ -1,18 +1,7 @@
 import {Component} from "react";
 import "./employees-list-item.css";
 
-interface IEmployeesListItem {
-	name: string;
-	salary: string;
-	increase: boolean;
-}
-
-interface IState {
-	increase: boolean
-	like: boolean
-}
-
-class EmployeesListItem extends Component<IEmployeesListItem, IState> {
+export class EmployeesListItem extends Component<IEmployeesListItem, IState> {
 	constructor(props: IEmployeesListItem) {
 		super(props);
 		this.state = {
@@ -55,11 +44,11 @@ class EmployeesListItem extends Component<IEmployeesListItem, IState> {
 					defaultValue={salary + "$"}
 				/>
 				<div className="d-flex justify-content-center align-items-center">
-					<button type="button" className="btn-cookie btn-sm " onClick={this.onIncrease}>
+					<button type="button" className="btn-cookie btn-sm" onClick={this.onIncrease}>
 						<i className="fas fa-cookie"></i>
 					</button>
 
-					<button type="button" className="btn-trash btn-sm ">
+					<button type="button" className="btn-trash btn-sm" onClick={this.props.onDelete}>
 						<i className="fas fa-trash"></i>
 					</button>
 					<i className="fas fa-star"></i>
@@ -69,4 +58,14 @@ class EmployeesListItem extends Component<IEmployeesListItem, IState> {
 	}
 }
 
-export default EmployeesListItem;
+interface IEmployeesListItem {
+	name: string;
+	salary: string;
+	increase: boolean;
+	onDelete: () => void
+}
+
+interface IState {
+	increase: boolean
+	like: boolean
+}

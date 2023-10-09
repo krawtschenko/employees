@@ -1,15 +1,7 @@
 import "./employees-add-form.css";
 import {ChangeEvent, Component} from "react";
 
-interface IEmployeesAddForm {
-}
-
-interface IState {
-	name: string
-	salary: string
-}
-
-class EmployeesAddForm extends Component<IEmployeesAddForm, IState> {
+export class EmployeesAddForm extends Component<IEmployeesAddForm, IState> {
 	constructor(props: IEmployeesAddForm) {
 		super(props);
 		this.state = {
@@ -23,6 +15,11 @@ class EmployeesAddForm extends Component<IEmployeesAddForm, IState> {
 			name: this.state.name, salary: this.state.salary,
 			[e.target.name]: e.target.value
 		})
+	}
+
+	onAddItem = () => {
+		const {name, salary} = this.state
+		this.props.addNewItem(name, salary)
 	}
 
 	render() {
@@ -49,7 +46,7 @@ class EmployeesAddForm extends Component<IEmployeesAddForm, IState> {
 						placeholder="Salary $"
 					/>
 
-					<button type="submit" className="btn btn-outline-light">
+					<button onClick={this.onAddItem} type="submit" className="btn btn-outline-light">
 						Add
 					</button>
 				</form>
@@ -58,4 +55,11 @@ class EmployeesAddForm extends Component<IEmployeesAddForm, IState> {
 	}
 }
 
-export default EmployeesAddForm;
+interface IEmployeesAddForm {
+	addNewItem: (name: string, salary: string) => void
+}
+
+interface IState {
+	name: string
+	salary: string
+}
