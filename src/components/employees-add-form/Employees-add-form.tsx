@@ -12,10 +12,11 @@ export class EmployeesAddForm extends Component<IEmployeesAddForm, IState> {
 	}
 
 	onValueChange = (e: ChangeEvent<HTMLInputElement>) => {
-		this.setState({
-			name: this.state.name, salary: this.state.salary,
-			[e.target.name]: e.target.value
-		})
+		if (e.target.name === 'name' || 'salary')
+			this.setState({
+				...this.state,
+				[e.target.name]: e.target.value
+			})
 	}
 
 	onSubmit = (e: FormEvent<HTMLFormElement>) => {
