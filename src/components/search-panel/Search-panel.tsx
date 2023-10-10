@@ -1,5 +1,6 @@
-import "./search-panel.css";
 import {ChangeEvent, Component} from "react";
+
+import "./search-panel.css";
 
 interface ISearchPanel {
 	onUpdateSearch: (term: string) => void
@@ -10,11 +11,8 @@ interface IState {
 }
 
 export class SearchPanel extends Component<ISearchPanel, IState> {
-	constructor(props: ISearchPanel) {
-		super(props);
-		this.state = {
-			term: ''
-		}
+	state = {
+		term: ''
 	}
 
 	onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {

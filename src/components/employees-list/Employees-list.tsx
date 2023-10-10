@@ -3,6 +3,12 @@ import {IData} from "../app/App";
 import {EmployeesListItem} from "../employees-list-item/Employees-list-item";
 import "./employees-list.css";
 
+interface IEmployeesList {
+	data: IData[];
+	onDelete: (id: string) => void
+	onToggleProp: (id: string, prop: 'increase' | 'rise') => void
+}
+
 export class EmployeesList extends Component<IEmployeesList> {
 	render() {
 		const {data, onDelete, onToggleProp} = this.props;
@@ -16,10 +22,4 @@ export class EmployeesList extends Component<IEmployeesList> {
 
 		return <ul className="app-list list-group">{elements}</ul>;
 	}
-}
-
-interface IEmployeesList {
-	data: IData[];
-	onDelete: (id: string) => void
-	onToggleProp: (id: string, prop: 'increase' | 'rise') => void
 }

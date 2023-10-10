@@ -2,13 +2,20 @@ import {ChangeEvent, Component, FormEvent} from "react";
 
 import "./employees-add-form.css";
 
+interface IEmployeesAddForm {
+	addNewItem: (name: string, salary: string) => void
+}
+
+interface IState {
+	name: string
+	salary: string
+}
+
+
 export class EmployeesAddForm extends Component<IEmployeesAddForm, IState> {
-	constructor(props: IEmployeesAddForm) {
-		super(props);
-		this.state = {
-			name: '',
-			salary: ''
-		}
+	state = {
+		name: '',
+		salary: ''
 	}
 
 	onValueChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -62,13 +69,4 @@ export class EmployeesAddForm extends Component<IEmployeesAddForm, IState> {
 			</div>
 		);
 	}
-}
-
-interface IEmployeesAddForm {
-	addNewItem: (name: string, salary: string) => void
-}
-
-interface IState {
-	name: string
-	salary: string
 }

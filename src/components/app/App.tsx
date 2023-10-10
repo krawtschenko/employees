@@ -29,20 +29,17 @@ export enum Filter {
 }
 
 export class App extends Component<{}, IState> {
-	constructor(props: {}) {
-		super(props);
-		this.state = {
-			data: [
-				{id: crypto.randomUUID(), name: "John C.", salary: '800', increase: false, rise: false},
-				{id: crypto.randomUUID(), name: "Alex M.", salary: '3000', increase: true, rise: false},
-				{id: crypto.randomUUID(), name: "Carl W.", salary: '5000', increase: false, rise: true},
-				{id: crypto.randomUUID(), name: "McCree J.", salary: '100', increase: true, rise: false},
-				{id: crypto.randomUUID(), name: "Gandalf G.", salary: '670', increase: false, rise: true},
-				{id: crypto.randomUUID(), name: "Thrall O.", salary: '8702', increase: false, rise: true}
-			],
-			term: '',
-			filter: Filter.All
-		}
+	state = {
+		data: [
+			{id: crypto.randomUUID(), name: "John C.", salary: '800', increase: false, rise: false},
+			{id: crypto.randomUUID(), name: "Alex M.", salary: '3000', increase: true, rise: false},
+			{id: crypto.randomUUID(), name: "Carl W.", salary: '5000', increase: false, rise: true},
+			{id: crypto.randomUUID(), name: "McCree J.", salary: '100', increase: true, rise: false},
+			{id: crypto.randomUUID(), name: "Gandalf G.", salary: '670', increase: false, rise: true},
+			{id: crypto.randomUUID(), name: "Thrall O.", salary: '8702', increase: false, rise: true}
+		],
+		term: '',
+		filter: Filter.All
 	}
 
 	deleteItem = (id: string) => {

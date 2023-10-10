@@ -1,9 +1,9 @@
 import {Component} from "react";
-import "./employees-list-item.css";
 import {IData} from "../app/App";
 
-export class EmployeesListItem extends Component<IEmployeesListItem> {
+import "./employees-list-item.css";
 
+export class EmployeesListItem extends Component<IEmployeesListItem> {
 	render() {
 		const {id, name, salary, increase, rise, onDelete, onToggleProp} = this.props;
 		let classNames = "list-group-item d-flex justify-content-between";

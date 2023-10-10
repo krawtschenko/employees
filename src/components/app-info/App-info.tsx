@@ -1,5 +1,11 @@
-import "./app-info.css";
 import {Component} from "react";
+
+import "./app-info.css";
+
+interface IAppInfo {
+	employees: number
+	increased: number
+}
 
 export class AppInfo extends Component<IAppInfo> {
 	render() {
@@ -12,9 +18,4 @@ export class AppInfo extends Component<IAppInfo> {
 			</div>
 		);
 	}
-}
-
-interface IAppInfo {
-	employees: number
-	increased: number
 }

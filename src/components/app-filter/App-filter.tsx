@@ -10,7 +10,6 @@ interface IAppFilter {
 }
 
 export class AppFilter extends Component<IAppFilter> {
-
 	render() {
 		const buttonsData = [
 			{name: Filter.All, label: 'All employees'},
